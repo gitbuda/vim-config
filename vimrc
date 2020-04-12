@@ -6,11 +6,6 @@
 "" Pathogen setup.
 " :scriptnames -> List all plugins.
 let g:pathogen_disabled = ['']
-" For some reason the csscolor plugin is very slow when run on the terminal
-" but not in GVim, so disable it if no GUI is running.
-if !has('gui_running')
-    call add(g:pathogen_disabled, 'csscolor')
-endif
 execute pathogen#infect()
 
 "" Profile vim.
