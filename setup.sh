@@ -124,6 +124,10 @@ if [ ! -d ~/.vim/bundle/vim-maktaba ]; then
     git clone https://github.com/google/vim-maktaba.git ~/.vim/bundle/vim-maktaba
 fi
 
+if [ ! -d ~/.vim/bundle/vim-autoformat ]; then
+    git clone https://github.com/Chiel92/vim-autoformat ~/.vim/bundle/vim-autoformat
+fi
+
 if [ ! -d ~/.vim/bundle/vim-javascript ]; then
     git clone https://github.com/pangloss/vim-javascript.git ~/.vim/bundle/vim-javascript
 fi

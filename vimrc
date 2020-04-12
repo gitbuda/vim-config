@@ -111,7 +111,7 @@ nnoremap <F2> bvwU<Esc>
 nnoremap <F3> bvwu<Esc>
 
 " F4 -> Call vim-autopep8.
-autocmd FileType python noremap <buffer> <F4> :call Autopep8()<CR>
+autocmd FileType python noremap <buffer><F4> :call Autopep8()<CR>
 
 " F5 -> Insert todo prefix.
 function! Todo()
@@ -173,25 +173,31 @@ set background=dark
 colorscheme solarized
 
 "" https://github.com/scrooloose/syntastic
-" let g:syntastic_debug = 1
-let g:syntastic_mode_map = { 'passive_filetypes': ['cpp'] }
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_ignore_files = ['/usr/include/', '/usr/lib/']
-let g:syntastic_hpp_checkers = ['clang_check']
-let g:syntastic_cpp_checkers = ['clang_check']
-let g:syntastic_cpp_check_header = 0
+"let g:syntastic_debug = 3
+":SyntasticCheck eslint
+":mes
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+" Set passive_filetypes because on the fly checking is slow.
+let g:syntastic_mode_map = {
+\ 'mode': 'active',
+\ 'passive_filetypes': ['cpp', 'javascript', 'typescript'] }
+let g:syntastic_ignore_files = ['/usr/include/', '/usr/lib/']
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_hpp_checkers = ['clang_check']
+let g:syntastic_cpp_checkers = ['clang_check']
+let g:syntastic_cpp_check_header = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'run_local_eslint_check'
+let g:syntastic_typescript_checkers = ['eslint']
+let g:syntastic_typescript_eslint_exec = 'run_local_eslint_check'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_auto_jump = 0
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_javascript_eslint_exe = 'npm run eslint'
-" let g:syntastic_typescript_checkers = ['eslint']
-" let g:syntastic_typescript_eslint_exe = 'npm run eslint'
+autocmd FileType c,cpp,javascript,typescript nnoremap <buffer><leader>sc :<C-u>SyntasticCheck<CR>
 
 "" https://github.com/neoclide/coc.nvim
 " if hidden is not set, TextEdit might fail.
@@ -219,8 +225,8 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
@@ -244,11 +250,11 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-if (index(['vim','help'], &filetype) >= 0)
-execute 'h '.expand('<cword>')
-else
-call CocAction('doHover')
-endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
 
 " Highlight symbol under cursor on CursorHold
@@ -358,9 +364,7 @@ noremap [b :BufSurfBack<CR>
 noremap [f :BufSurfForward<CR>
 
 "" https://github.com/rhysd/vim-clang-format
-autocmd FileType c,cpp ClangFormatAutoEnable
-autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
+autocmd FileType c,cpp nnoremap <buffer><leader>cf :<C-u>ClangFormat<CR>
 
 "" https://github.com/tell-k/vim-autopep8
 let g:autopep8_max_line_length=79
@@ -373,16 +377,20 @@ let g:autopep8_aggressive=2
 
 "" https://github.com/mileszs/ack.vim
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+    let g:ackprg = 'ag --vimgrep'
 endif
 
 "" https://github.com/alvan/vim-closetag
 
 "" https://github.com/google/vim-codefmt.git
-autocmd FileType html,css,sass,scss,less,json noremap <leader>cf :FormatCode<cr>
-autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+autocmd FileType html,css,sass,scss,less,json noremap <buffer><leader>cf :<C-u>FormatCode<cr>
 
 "" https://github.com/google/vim-maktaba
+
+"" https://github.com/Chiel92/vim-autoformat
+let g:formatters_typescript = ['eslint_local']
+let g:formatters_javascript = ['eslint_local']
+autocmd FileType javascript,typescript noremap <buffer><leader>cf :<C-u>Autoformat<cr>
 
 "" https://github.com/pangloss/vim-javascript
 
@@ -401,7 +409,7 @@ let g:typescript_indent_disable=1
 "" https://github.com/ntpeters/vim-better-whitespace
 highlight ExtraWhitespace ctermbg=darkred
 autocmd FileType * EnableWhitespace
-nnoremap <silent> <Leader><space> :StripWhitespace<CR>
+nnoremap <silent> <leader><space> :StripWhitespace<CR>
 
 """" Workspace specific setup.
 
@@ -412,10 +420,10 @@ let g:gdb_active_tmux_pane = ''
 autocmd FileType c,cpp nnoremap <buffer> <C-g>bk :exe 'silent !tmux' 'send-keys -t ' . g:gdb_active_tmux_session . ':' . g:gdb_active_tmux_pane '"b %:' . line(".") '" enter'<CR> \| :redraw!<CR>
 
 "" Linters and fixers.
-noremap <Leader>C :ccl <bar> lcl<CR>
-noremap <Leader>O :Errors<CR>
-noremap <Leader>ln :lnext<CR>
-noremap <Leader>lu :lprev<CR>
+noremap <leader>C :ccl <bar> lcl<CR>
+noremap <leader>O :Errors<CR>
+noremap <leader>ln :lnext<CR>
+noremap <leader>lu :lprev<CR>
 
 "" C/C++ development.
 set nofoldenable
@@ -439,15 +447,15 @@ if has('cscope')
         echo "CScope reloaded"
     endfunction
     " Reload Cpp CScope.
-    nnoremap <leader>fl :call ReloadCppCScope()<CR>
+    nnoremap <leader>fr :call ReloadCppCScope()<CR>
     " Find this C symbol.
     nnoremap <leader>fs :cs find s <cword><CR>
     " Find this definition.
-    nnoremap <leader>fg :cs find g <cword><CR>
+    nnoremap <leader>fd :cs find g <cword><CR>
     " Find functions called by this function.
-    nnoremap <leader>fd :cs find d <cword><CR>
+    nnoremap <leader>fe :cs find d <cword><CR>
     " Find functions calling this function.
-    nnoremap <leader>fc :cs find c <cword><CR>
+    nnoremap <leader>fn :cs find c <cword><CR>
 endif
 " cppman (global documentation).
 " Shift + K -> Open cppman in a tmux window.
