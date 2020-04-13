@@ -195,6 +195,11 @@ let g:syntastic_auto_jump = 0
 autocmd FileType c,cpp,javascript,typescript nnoremap <buffer><leader>sc :<C-u>SyntasticCheck<CR>
 
 "" https://github.com/neoclide/coc.nvim
+"let $NVIM_COC_LOG_LEVEL = 'debug'
+":CocInfo :CocOpenLog
+" https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+let g:coc_global_extensions = []
+
 " if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -458,7 +463,7 @@ endif
 " Ctrl + T -> Go backward.
 " q -> Quit the tmux window.
 command! -nargs=+ Cppman silent! call system("cd /tmp && tmux split-window cppman " . expand(<q-args>))
-autocmd FileType cpp nnoremap <silent><buffer>K <Esc>:Cppman <cword><CR>
+autocmd FileType cpp nnoremap <silent><buffer><leader>K <Esc>:Cppman <cword><CR>
 " NOTES:
 " * cd /tmp is here because otherwise vim loads session file. It's a bit
 "   hackish. Figure out a better way. Probably the cppman has to be changed.
