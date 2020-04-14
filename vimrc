@@ -417,7 +417,7 @@ nnoremap <silent> <leader><space> :StripWhitespace<CR>
 " Send current line as a break point to the gdb session.
 let g:gdb_active_tmux_session = ''
 let g:gdb_active_tmux_pane = ''
-autocmd FileType c,cpp nnoremap <buffer> <C-g>bk :exe 'silent !tmux' 'send-keys -t ' . g:gdb_active_tmux_session . ':' . g:gdb_active_tmux_pane '"b %:' . line(".") '" enter'<CR> \| :redraw!<CR>
+autocmd FileType c,cpp nnoremap <buffer> <C-g>a :exe 'silent !tmux' 'send-keys -t ' . g:gdb_active_tmux_session . ':' . g:gdb_active_tmux_pane '"b %:' . line(".") '" enter'<CR> \| :redraw!<CR>
 
 "" Linters and fixers.
 noremap <leader>C :ccl <bar> lcl<CR>
@@ -430,9 +430,11 @@ set nofoldenable
 " Switch hpp <-> cpp.
 nnoremap <C-g>h :e %<.hpp<CR>
 nnoremap <C-g>i :e %<.cpp<CR>
+nnoremap <C-g>l :e %<.lcp<CR>
 " Open hpp or cpp in a vertical window.
 nnoremap <C-g>vh :vsp %<.hpp<CR>
 nnoremap <C-g>vi :vsp %<.cpp<CR>
+nnoremap <C-g>vl :vsp %<.lcp<CR>
 " Cscope.
 if has('cscope')
     " Build and reload database file.
