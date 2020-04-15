@@ -155,3 +155,6 @@ if [ ! -d ~/.vim/bundle/vim-better-whitespace ]; then
     git clone https://github.com/ntpeters/vim-better-whitespace ~/.vim/bundle/vim-better-whitespace
 fi
 
+if [ ! -d ~/.vim/bundle/vim-cpp-modern ]; then
+    git clone https://github.com/bfrg/vim-cpp-modern ~/.vim/bundle/vim-cpp-modern
+fi

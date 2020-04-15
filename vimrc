@@ -411,15 +411,24 @@ highlight ExtraWhitespace ctermbg=darkred
 autocmd FileType * EnableWhitespace
 nnoremap <silent> <leader><space> :StripWhitespace<CR>
 
+"" https://github.com/bfrg/vim-cpp-modern
+
 """" Workspace specific setup.
 
-"" vim + tmux + gdb bindings
+"" vim + tmux + gdb bindings and plugin setup.
 " Send current line as a break point to the gdb session.
 let g:gdb_active_tmux_session = ''
 let g:gdb_active_tmux_pane = ''
-autocmd FileType c,cpp nnoremap <buffer> <C-g>a :exe 'silent !tmux' 'send-keys -t ' . g:gdb_active_tmux_session . ':' . g:gdb_active_tmux_pane '"b %:' . line(".") '" enter'<CR> \| :redraw!<CR>
+autocmd FileType c,cpp nnoremap <buffer> <C-g>a
+    \ :exe 'silent !tmux'
+    \ 'send-keys -t ' . g:gdb_active_tmux_session . ':' . g:gdb_active_tmux_pane
+    \ '"b %:' . line(".") '" enter'<CR> \| :redraw!<CR>
+" terminal-debug settings.
+let g:termdebug_wide = 163
+:packadd! termdebug
+" Run the embedded gdb by executing :Termdebug
 
-"" Linters and fixers.
+"" Linmers and fixers.
 noremap <leader>C :ccl <bar> lcl<CR>
 noremap <leader>O :Errors<CR>
 noremap <leader>ln :lnext<CR>
