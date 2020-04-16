@@ -41,8 +41,8 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 noremap <C-y> :vertical resize +5<CR>
 noremap <C-t> :vertical resize -5<CR>
-noremap <C-u> :resize +5<CR>
-noremap <C-i> :resize -5<CR>
+noremap <C-h>u :resize +5<CR>
+noremap <C-h>i :resize -5<CR>
 " set preview window below
 set splitbelow
 
@@ -92,10 +92,10 @@ function! ShowFKeysMappings()
 endfunction
 " F1 -> Make program.
 let g:buda_build_dir="build"
-let &makeprg="(cd ".g:buda_build_dir." && make)"
+let &makeprg="(cd ".g:buda_build_dir." && make -j8)"
 function! UpdateMakePrgBuildDir(path)
     let g:buda_build_dir=a:path
-    let &makeprg="(cd ".g:buda_build_dir." && make)"
+    let &makeprg="(cd ".g:buda_build_dir." && make -j8)"
 endfunction
 nmap <F1> :make<CR>
 
