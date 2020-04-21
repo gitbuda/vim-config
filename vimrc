@@ -180,8 +180,8 @@ let g:syntastic_mode_map = {
 \ 'passive_filetypes': ['cpp', 'javascript', 'typescript'] }
 let g:syntastic_ignore_files = ['/usr/include/', '/usr/lib/']
 let g:syntastic_python_checkers=['flake8']
-let g:syntastic_hpp_checkers = ['clang_check']
-let g:syntastic_cpp_checkers = ['clang_check']
+let g:syntastic_hpp_checkers = ['cppcheck', 'clang_tidy', 'clang_check']
+let g:syntastic_cpp_checkers = ['cppcheck', 'clang_tidy', 'clang_check']
 let g:syntastic_cpp_check_header = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'run_local_eslint_check'
