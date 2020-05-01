@@ -166,6 +166,16 @@ let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
 set background=dark
 colorscheme solarized
+function! SetDarkColorScheme()
+    set background=dark
+    execute "!terminal_profile dark"
+endfunction
+function! SetLightColorScheme()
+    set background=light
+    execute "!terminal_profile light"
+endfunction
+command! SetDarkColorScheme call SetDarkColorScheme()
+command! SetLightColorScheme call SetLightColorScheme()
 
 "" https://github.com/scrooloose/syntastic
 "let g:syntastic_debug = 3
