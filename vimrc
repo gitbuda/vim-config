@@ -73,6 +73,29 @@ set tabstop=4
 set softtabstop=4
 set noshowmode
 
+"" Fold config.
+" Useful resource:
+"  * https://unix.stackexchange.com/questions/141097/how-to-enable-and-use-code-folding-in-vim
+"  * https://learnvimscriptthehardway.stevelosh.com/chapters/49.html
+"  * https://www.linux.com/training-tutorials/vim-tips-folding-fun
+" Useful bindings:
+"  * zM -> Close all folds.
+"  * zR -> Open all folds.
+"  * zc -> Close fold under current cursor.
+"  * zo -> Open fold under current cursor.
+"  * zO -> Open all folds under current cursor.
+"  * zj -> Move the cursor to the next fold.
+"  * zk -> Move the cursor to the previous fold.
+set foldmethod=syntax
+" It makes sense to set the foldnestmax to 2 because of constructs like
+" namespaces. In case foldnestmax would be 1 the entire namspace would be
+" considered as a one giant fold. On the other side if foldnestmax is too high
+" all small scopes would be created which is hard to navigate.
+set foldnestmax=2
+" Don't create folds by default. Create folds manually only if that is
+" more convenient to use.
+set nofoldenable
+
 "" Tabs navigation.
 set guitablabel=%t
 map <C-f> <Esc>:tabf
@@ -445,7 +468,6 @@ noremap <leader>ln :lnext<CR>
 noremap <leader>lu :lprev<CR>
 
 "" C/C++ development.
-set nofoldenable
 " Switch hpp <-> cpp.
 nnoremap <C-g>h :e %<.hpp<CR>
 nnoremap <C-g>i :e %<.cpp<CR>
