@@ -8,18 +8,18 @@ run_time=$(date -u +'%Y-%m-%d_%H-%M-%S')
 if [ ! -L ~/.vim ]; then
     echo "There is no a sym link to the vim folder. Backup and create one."
     if [ -d ~/.vim ]; then
-        mv ~/.vim ~/.vim-backup__${run_time}
+        mv ~/.vim "$HOME/.vim-backup__${run_time}"
     fi
-    ln -s ${script_dir}/vim ~/.vim
+    ln -s "${script_dir}/vim" ~/.vim
 fi
 
 # Link vimrc file.
 if [ ! -L ~/.vimrc ]; then
     echo "There is no a sym link to the vimrc. Backup and create one."
     if [ -f ~/.vimrc ]; then
-        mv ~/.vimrc ~/.vimrc-backup__${run_time}
+        mv ~/.vimrc "$HOME/.vimrc-backup__${run_time}"
     fi
-    ln -s ${script_dir}/vimrc ~/.vimrc
+    ln -s "${script_dir}/vimrc" ~/.vimrc
 fi
 
 # Install plugins.
@@ -38,7 +38,7 @@ if [ ! -d ~/.vim/bundle/coc.nvim ]; then
     git clone https://github.com/neoclide/coc.nvim ~/.vim/bundle/coc.nvim
     cd ~/.vim/bundle/coc.nvim
     ./install.sh
-    cd ${script_dir}
+    cd "${script_dir}"
 fi
 
 if [ ! -d ~/.vim/bundle/vim-airline ]; then
@@ -144,7 +144,7 @@ if [ ! -d ~/.vim/bundle/vimproc.vim ]; then
     git clone https://github.com/Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim
     cd ~/.vim/bundle/vimproc.vim
     make
-    cd ${script_dir}
+    cd "${script_dir}"
 fi
 
 if [ ! -d ~/.vim/bundle/tsuquyomi ]; then
@@ -157,4 +157,9 @@ fi
 
 if [ ! -d ~/.vim/bundle/vim-cpp-modern ]; then
     git clone https://github.com/bfrg/vim-cpp-modern ~/.vim/bundle/vim-cpp-modern
+fi
+
+if [ ! -d ~/.vim/pack/python/start/black/plugin ]; then
+    mkdir -p ~/.vim/pack/python/start/black/plugin
+    curl https://raw.githubusercontent.com/psf/black/master/plugin/black.vim -o ~/.vim/pack/python/start/black/plugin/black.vim
 fi
