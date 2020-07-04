@@ -539,3 +539,7 @@ nnoremap <C-g>ts :exe 'e '.GetAngularComponentFileName().'.ts'<CR>
 
 "" TypeScript
 autocmd BufRead,BufNewFile *.ts,*.spec.ts setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+"" YAML
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
