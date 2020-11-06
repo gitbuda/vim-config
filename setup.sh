@@ -36,9 +36,6 @@ fi
 
 if [ ! -d ~/.vim/bundle/coc.nvim ]; then
     git clone https://github.com/neoclide/coc.nvim ~/.vim/bundle/coc.nvim
-    cd ~/.vim/bundle/coc.nvim
-    ./install.sh
-    cd "${script_dir}"
 fi
 
 if [ ! -d ~/.vim/bundle/vim-airline ]; then
