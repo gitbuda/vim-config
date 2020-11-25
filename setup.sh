@@ -61,10 +61,6 @@ if [ ! -d ~/.vim/bundle/vim-nerdtree-tabs ]; then
     git clone https://github.com/jistr/vim-nerdtree-tabs.git ~/.vim/bundle/vim-nerdtree-tabs
 fi
 
-if [ ! -d ~/.vim/bundle/ctrlp.vim ]; then
-    git clone https://github.com/ctrlpvim/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
-fi
-
 if [ ! -d ~/.vim/bundle/vim-ctrlp-tjump ]; then
     git clone https://github.com/ivalkeen/vim-ctrlp-tjump.git ~/.vim/bundle/vim-ctrlp-tjump
 fi
@@ -159,4 +155,20 @@ fi
 if [ ! -d ~/.vim/pack/python/start/black/plugin ]; then
     mkdir -p ~/.vim/pack/python/start/black/plugin
     curl https://raw.githubusercontent.com/psf/black/master/plugin/black.vim -o ~/.vim/pack/python/start/black/plugin/black.vim
+fi
+
+# Both fzf and fzf.vim have to be installed.
+if [ ! -d ~/.vim/bundle/fzf ]; then
+    git clone https://github.com/junegunn/fzf ~/.vim/bundle/fzf
+fi
+if [ ! -d ~/.vim/bundle/fzf.vim ]; then
+    git clone https://github.com/junegunn/fzf.vim ~/.vim/bundle/fzf.vim
+fi
+
+if [ ! -d ~/.vim/bundle/ultisnips ]; then
+    git clone https://github.com/sirver/ultisnips ~/.vim/bundle/ultisnips
+fi
+
+if [ ! -d ~/.vim/bundle/vim-snippets ]; then
+    git clone https://github.com/honza/vim-snippets ~/.vim/bundle/vim-snippets
 fi
