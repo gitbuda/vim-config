@@ -168,7 +168,27 @@ fi
 if [ ! -d ~/.vim/bundle/ultisnips ]; then
     git clone https://github.com/sirver/ultisnips ~/.vim/bundle/ultisnips
 fi
-
 if [ ! -d ~/.vim/bundle/vim-snippets ]; then
     git clone https://github.com/honza/vim-snippets ~/.vim/bundle/vim-snippets
+fi
+
+# Clojure environment.
+# https://mybuddymichael.com/writings/writing-clojure-with-vim-in-2013.html
+if [ ! -d ~/.vim/bundle/rainbow_parentheses.vim ]; then
+    git clone https://github.com/junegunn/rainbow_parentheses.vim ~/.vim/bundle/rainbow_parentheses.vim
+fi
+if [ ! -d ~/.vim/bundle/vim-clojure-static ]; then
+    git clone https://github.com/guns/vim-clojure-static ~/.vim/bundle/vim-clojure-static
+fi
+if [ ! -d ~/.vim/bundle/vim-salve ]; then
+    git clone git://github.com/tpope/vim-salve.git ~/.vim/bundle/vim-salve
+fi
+if [ ! -d ~/.vim/bundle/vim-projectionist ]; then
+    git clone git://github.com/tpope/vim-projectionist.git ~/.vim/bundle/vim-projectionist
+fi
+if [ ! -d ~/.vim/bundle/vim-dispatch ]; then
+    git clone git://github.com/tpope/vim-dispatch.git ~/.vim/bundle/vim-dispatch
+fi
+if [ ! -d ~/.vim/bundle/vim-fireplace ]; then
+    git clone https://github.com/tpope/vim-fireplace ~/.vim/bundle/vim-fireplace
 fi

@@ -492,6 +492,12 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+"" https://github.com/junegunn/rainbow_parentheses.vim
+augroup rainbow_lisp
+    autocmd!
+    autocmd FileType lisp,clojure,scheme RainbowParentheses
+augroup END
+
 """" Workspace specific setup.
 
 "" vim + tmux + gdb bindings and plugin setup.
