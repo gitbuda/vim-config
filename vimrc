@@ -220,12 +220,13 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'run_local_eslint_check'
 let g:syntastic_typescript_checkers = ['eslint']
 let g:syntastic_typescript_eslint_exec = 'run_local_eslint_check'
+let g:syntastic_clojure_checkers = ['eastwood']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_auto_jump = 0
-autocmd FileType c,cpp,javascript,typescript nnoremap <buffer><leader>sc :<C-u>SyntasticCheck<CR>
+autocmd FileType c,cpp,javascript,typescript,clojure nnoremap <buffer><leader>sc :<C-u>SyntasticCheck<CR>
 
 "" https://github.com/neoclide/coc.nvim
 "let $NVIM_COC_LOG_LEVEL = 'debug'
@@ -496,7 +497,11 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 augroup rainbow_lisp
     autocmd!
     autocmd FileType lisp,clojure,scheme RainbowParentheses
+    autocmd FileType text RainbowParentheses!
 augroup END
+
+"" https://github.com/venantius/vim-cljfmt
+let g:clj_fmt_autosave = 0
 
 """" Workspace specific setup.
 

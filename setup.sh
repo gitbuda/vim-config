@@ -192,3 +192,9 @@ fi
 if [ ! -d ~/.vim/bundle/vim-fireplace ]; then
     git clone https://github.com/tpope/vim-fireplace ~/.vim/bundle/vim-fireplace
 fi
+if [ ! -d ~/.vim/bundle/vim-cljfmt ]; then
+    git clone https://github.com/venantius/vim-cljfmt.git ~/.vim/bundle/vim-cljfmt
+fi
+if [ ! -d ~/.vim/bundle/vim-eastwood ]; then
+    git clone https://github.com/venantius/vim-eastwood.git ~/.vim/bundle/vim-eastwood
+fi
