@@ -210,7 +210,7 @@ set statusline+=%*
 " Set passive_filetypes because on the fly checking is slow.
 let g:syntastic_mode_map = {
 \ 'mode': 'active',
-\ 'passive_filetypes': ['cpp', 'javascript', 'typescript'] }
+\ 'passive_filetypes': ['cpp', 'javascript', 'typescript', 'clojure'] }
 let g:syntastic_ignore_files = ['/usr/include/', '/usr/lib/']
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_hpp_checkers = ['cppcheck', 'clang_tidy', 'clang_check']
@@ -492,6 +492,9 @@ nnoremap <c-p> :GFiles<CR>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+"" https://github.com/tpope/vim-fireplace
+au Filetype clojure nmap <c-c><c-k> :Require<cr>
 
 "" https://github.com/junegunn/rainbow_parentheses.vim
 augroup rainbow_lisp
