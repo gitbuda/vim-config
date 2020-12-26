@@ -152,9 +152,13 @@ if [ ! -d ~/.vim/bundle/vim-cpp-modern ]; then
     git clone https://github.com/bfrg/vim-cpp-modern ~/.vim/bundle/vim-cpp-modern
 fi
 
+# Python environment.
 if [ ! -d ~/.vim/pack/python/start/black/plugin ]; then
     mkdir -p ~/.vim/pack/python/start/black/plugin
     curl https://raw.githubusercontent.com/psf/black/master/plugin/black.vim -o ~/.vim/pack/python/start/black/plugin/black.vim
+fi
+if [ ! -d ~/.vim/bundle/vimspector ]; then
+    git clone https://github.com/puremourning/vimspector ~/.vim/bundle/vimspector
 fi
 
 # Both fzf and fzf.vim have to be installed.
@@ -197,4 +201,8 @@ if [ ! -d ~/.vim/bundle/vim-cljfmt ]; then
 fi
 if [ ! -d ~/.vim/bundle/vim-eastwood ]; then
     git clone https://github.com/venantius/vim-eastwood.git ~/.vim/bundle/vim-eastwood
+fi
+
+if [ ! -d ~/.vim/bundle/vim-slime.git ]; then
+    git clone https://github.com/jpalardy/vim-slime.git ~/.vim/bundle/vim-slime.git
 fi

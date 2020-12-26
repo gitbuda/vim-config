@@ -1,0 +1,13 @@
+{
+  "configurations": {
+    "vimspector-default":{
+      "adapter": "debugpy",
+      "configuration": {
+          "name": "vimspector-default",
+          "type": "python",
+          "request": "launch",
+          "program": "${file}"
+      }
+    }
+  }
+}

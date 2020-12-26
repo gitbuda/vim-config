@@ -232,7 +232,7 @@ autocmd FileType c,cpp,javascript,typescript,clojure nnoremap <buffer><leader>sc
 "let $NVIM_COC_LOG_LEVEL = 'debug'
 ":CocInfo :CocOpenLog
 " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-let g:coc_global_extensions = []
+let g:coc_global_extensions = ['coc-pyright']
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -484,6 +484,14 @@ autocmd FileType * EnableWhitespace
 nnoremap <silent> <leader><space> :StripWhitespace<CR>
 
 "" https://github.com/bfrg/vim-cpp-modern
+
+"" https://github.com/puremourning/vimspector
+let g:vimspector_install_gadgets = [ 'debugpy' ]
+
+"" https://github.com/jpalardy/vim-slime.git
+let g:slime_target = "tmux"
+" Just open a pane in the current window.
+let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.1"}
 
 "" https://github.com/junegunn/fzf.vim
 nnoremap <c-p> :GFiles<CR>
