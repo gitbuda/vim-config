@@ -400,6 +400,9 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" Sometime floating windows stays floating forever.
+nnoremap <silent><nowait> <C-c>fc coc#float#close_all()<CR>
+
 "" https://github.com/bling/vim-airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme='base16'
@@ -495,6 +498,7 @@ let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_
 
 "" https://github.com/junegunn/fzf.vim
 nnoremap <c-p> :GFiles<CR>
+let g:fzf_buffers_jump = 1
 
 "" https://github.com/sirver/ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
