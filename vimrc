@@ -72,6 +72,14 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set noshowmode
+" Highlight all search results.
+set hlsearch
+" Dismiss all search results by hitting enter.
+nnoremap <CR> :noh<CR><CR>
+" Do case insensitive search.
+set ignorecase
+" Show incremental search results as you type.
+set incsearch
 
 "" Fold config.
 " Useful resource:
@@ -133,7 +141,7 @@ autocmd FileType python noremap <buffer><F4> :call Autopep8()<CR>
 
 " F5 -> Insert todo prefix.
 function! Todo()
-    execute ":normal! i TODO(buda): "
+    execute ":normal! i TODO(gitbuda): "
 endfunction
 nnoremap <F5> :call Todo()<CR>
 
