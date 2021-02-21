@@ -47,6 +47,7 @@ noremap <C-h>i :resize -5<CR>
 set splitbelow
 
 let &colorcolumn="80"
+au BufNewFile,BufRead *.cpp,*.hpp let &colorcolumn="120"
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 "" You can also use g; and g, to move back- and forward in the list of your
