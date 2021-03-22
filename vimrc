@@ -132,10 +132,10 @@ endfunction
 nmap <F1> :make<CR>
 
 " F2 -> Uppercase the current word.
-nnoremap <F2> bvwU<Esc>
+nnoremap <F2> viwU
 
 " F3 -> Lowecase the current word.
-nnoremap <F3> bvwu<Esc>
+nnoremap <F3> viwu
 
 " F4 -> Call vim-autopep8.
 autocmd FileType python noremap <buffer><F4> :call Autopep8()<CR>
