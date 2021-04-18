@@ -206,3 +206,8 @@ fi
 if [ ! -d ~/.vim/bundle/vim-slime.git ]; then
     git clone https://github.com/jpalardy/vim-slime.git ~/.vim/bundle/vim-slime.git
 fi
+
+# Rust environment.
+if [ ! -d ~/.vim/bundle/rust.vim ]; then
+    git clone https://github.com/rust-lang/rust.vim.git ~/.vim/bundle/rust.vim
+fi

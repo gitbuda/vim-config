@@ -542,7 +542,7 @@ let g:termdebug_wide = 163
 :packadd! termdebug
 " Run the embedded gdb by executing :Termdebug
 
-"" Linmers and fixers.
+"" Linters and fixers.
 noremap <leader>C :ccl <bar> lcl<CR>
 noremap <leader>O :Errors<CR>
 noremap <leader>ln :lnext<CR>
