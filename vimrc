@@ -48,6 +48,7 @@ set splitbelow
 
 let &colorcolumn="80"
 au BufNewFile,BufRead *.cpp,*.hpp let &colorcolumn="120"
+au BufNewFile,BufRead *.rs let &colorcolumn="100"
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 "" You can also use g; and g, to move back- and forward in the list of your
@@ -129,7 +130,8 @@ function! UpdateMakePrgBuildDir(path)
     let g:buda_build_dir=a:path
     let &makeprg="(cd ".g:buda_build_dir." && make -j8)"
 endfunction
-nmap <F1> :make<CR>
+nnoremap <F1> :make<CR>
+au FileType rust nnoremap <F1> :make<space>build<CR>
 
 " F2 -> Uppercase the current word.
 nnoremap <F2> viwU
@@ -241,7 +243,7 @@ autocmd FileType c,cpp,javascript,typescript,clojure nnoremap <buffer><leader>sc
 "let $NVIM_COC_LOG_LEVEL = 'debug'
 ":CocInfo :CocOpenLog
 " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-let g:coc_global_extensions = ['coc-pyright']
+let g:coc_global_extensions = ['coc-pyright', 'coc-rls']
 
 " TextEdit might fail if hidden is not set.
 set hidden
