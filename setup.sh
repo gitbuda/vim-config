@@ -211,3 +211,8 @@ fi
 if [ ! -d ~/.vim/bundle/rust.vim ]; then
     git clone https://github.com/rust-lang/rust.vim.git ~/.vim/bundle/rust.vim
 fi
+
+# Cypher environment.
+if [ ! -d ~/.vim/bundle/cypher.vim ]; then
+    git clone https://github.com/memgraph/cypher.vim ~/.vim/bundle/cypher.vim
+fi
