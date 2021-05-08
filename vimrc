@@ -412,7 +412,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Sometime floating windows stays floating forever.
-nnoremap <silent><nowait> <C-c>fc coc#float#close_all()<CR>
+nnoremap <silent><nowait> <C-c>x :call coc#float#close_all()<CR>
 
 "" https://github.com/bling/vim-airline
 let g:airline_powerline_fonts = 1
