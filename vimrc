@@ -198,18 +198,28 @@ endif
 set t_Co=256
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
-set background=dark
 colorscheme solarized
 function! SetDarkColorScheme()
     set background=dark
-    execute "!terminal_profile dark"
+    silent "!terminal_profile dark"
 endfunction
 function! SetLightColorScheme()
     set background=light
-    execute "!terminal_profile light"
+    silent "!terminal_profile light"
 endfunction
 command! SetDarkColorScheme call SetDarkColorScheme()
 command! SetLightColorScheme call SetLightColorScheme()
+function! SetInitColorScheme()
+    let terminal_profile=readfile($HOME.'/.terminal-profile', '', 1)[0]
+    if terminal_profile == 'dark'
+        call SetDarkColorScheme()
+    elseif terminal_profile == 'light'
+        call SetLightColorScheme()
+    else
+        call SetDarkColorScheme()
+    endif
+endfunction
+call SetInitColorScheme()
 
 "" https://github.com/scrooloose/syntastic
 "let g:syntastic_debug = 3
