@@ -47,7 +47,7 @@ noremap <C-h>i :resize -5<CR>
 set splitbelow
 
 let &colorcolumn="80"
-au BufNewFile,BufRead *.cpp,*.hpp let &colorcolumn="120"
+au BufNewFile,BufRead *.cpp,*.hpp,*.py let &colorcolumn="120"
 au BufNewFile,BufRead *.rs let &colorcolumn="100"
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
@@ -234,6 +234,7 @@ let g:syntastic_mode_map = {
 \ 'passive_filetypes': ['cpp', 'javascript', 'typescript', 'clojure'] }
 let g:syntastic_ignore_files = ['/usr/include/', '/usr/lib/']
 let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_flake8_args='--max-line-length=120'
 let g:syntastic_hpp_checkers = ['cppcheck', 'clang_tidy', 'clang_check']
 let g:syntastic_cpp_checkers = ['cppcheck', 'clang_tidy', 'clang_check']
 let g:syntastic_cpp_check_header = 0
